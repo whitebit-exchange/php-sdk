@@ -1,5 +1,5 @@
 {
-    "name": "whitebit/php-sdk",
+    "name": "whitebit/php",
     "type": "library",
     "license": "MIT",
     "autoload": {

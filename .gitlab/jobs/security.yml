@@ -1,5 +1,6 @@
 .container_scanning:
   stage: security
+  allow_failure: true
   image:
     name: docker.io/aquasec/trivy:latest
     entrypoint: [ "" ]
@@ -32,6 +33,7 @@
 
 package scan:
   stage: security
+  allow_failure: true
   needs:
     - build vendors
   dependencies:

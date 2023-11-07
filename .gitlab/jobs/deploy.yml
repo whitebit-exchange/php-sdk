@@ -1,5 +1,5 @@
-push to public:
-  stage: build
+push to github:
+  stage: deploy
   image: bitnami/git
   when: manual
   only:
@@ -8,7 +8,7 @@ push to public:
     - git fetch --unshallow
     - git config --global user.email "robot@whitebit.com"
     - git config --global user.name "whitebit-robot"
-    - rm -rf .gitlab* Dockerfile docker-compose.yaml
+    - rm -rf .gitlab* Dockerfile docker-compose.yaml tests
     - git add .
     - git commit --amend --no-edit
     - git remote set-url origin $GITHUB_REPO
