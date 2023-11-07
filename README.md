@@ -1,9 +1,9 @@
 # WhiteBIT PHP SDK
 
-[![Latest Version](https://img.shields.io/packagist/v/whitebit/php.svg)](https://packagist.org/packages/whitebit/php)
-[![License](https://img.shields.io/github/license/whitebit-exchange/php.svg)](LICENSE)
+[![Latest Version](https://img.shields.io/packagist/v/whitebit/php-sdk.svg)](https://packagist.org/packages/whitebit/php-sdk)
+[![License](https://img.shields.io/github/license/whitebit-exchange/php-sdk.svg)](LICENSE)
 
-Official PHP SDK for the [WhiteBIT](https://whitebit.com/) API. ([WhiteBIT API Documentation](docs.whitebit.com))
+Official PHP SDK for the [WhiteBIT](https://whitebit.com/) API. ([WhiteBIT API Documentation](https://docs.whitebit.com))
 
 ## Requirements
 * `PHP 8.2` or higher
@@ -13,7 +13,7 @@ Official PHP SDK for the [WhiteBIT](https://whitebit.com/) API. ([WhiteBIT API D
 You can install this SDK via [Composer](https://getcomposer.org/):
 
 ```bash
-composer require whitebit/php
+composer require whitebit/php-sdk
 ```
 
 ## Usage
