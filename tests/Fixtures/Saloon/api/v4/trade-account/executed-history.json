@@ -1,0 +1,16 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "Date": "REDACTED",
+    "Content-Type": "application\/json",
+    "Content-Length": "205",
+    "Connection": "keep-alive",
+    "CF-Cache-Status": "DYNAMIC",
+    "Strict-Transport-Security": "max-age=15552000; includeSubDomains; preload",
+    "X-Content-Type-Options": "nosniff",
+    "Server": "cloudflare",
+    "CF-RAY": "REDACTED",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "data": "{\"BTC_USDT\":[{\"id\":1234567890,\"clientOrderId\":\"\",\"time\":1694094675.367614,\"side\":\"buy\",\"role\":2,\"amount\":\"0.035417\",\"price\":\"25704.39\",\"deal\":\"910.37238063\",\"fee\":\"0.637260666441\",\"orderId\":299668078569}]}"
+}

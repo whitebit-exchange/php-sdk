@@ -1,0 +1,22 @@
+push to public:
+  stage: build
+  image: bitnami/git
+  when: manual
+  only:
+    - tags
+  before_script:
+    - git fetch --unshallow
+    - git config --global user.email "robot@whitebit.com"
+    - git config --global user.name "whitebit-robot"
+    - rm -rf .gitlab* Dockerfile docker-compose.yaml
+    - git add .
+    - git commit --amend --no-edit
+    - git remote set-url origin $GITHUB_REPO
+    - git filter-branch -f --env-filter "
+        GIT_AUTHOR_NAME='whitebit-robot'
+        GIT_AUTHOR_EMAIL='robot@whitebit.com'
+        GIT_COMMITTER_NAME='whitebit-robot'
+        GIT_COMMITTER_EMAIL='robot@whitebit.com'
+      " HEAD
+  script:
+    - git push --tags -f origin 'HEAD:main'

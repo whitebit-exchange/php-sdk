@@ -1,0 +1,30 @@
+build image:
+  image: docker:dind
+  stage: build
+  variables:
+    IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+    DOCKER_BUILDKIT: 1
+  cache:
+    key:
+      files:
+        - Dockerfile
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $IMAGE_TAG . --push
+
+
+build vendors:
+  stage: build
+  dependencies:
+    - build image
+  artifacts:
+    paths:
+      - vendor/
+  cache:
+    key:
+      files:
+        - composer.lock
+    policy: pull-push
+  image: composer:2
+  script:
+    - composer install --no-interaction --prefer-dist --optimize-autoloader

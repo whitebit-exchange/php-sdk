@@ -1,0 +1,20 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "Date": "REDACTED",
+    "Content-Type": "application\/json",
+    "Content-Length": "129",
+    "Connection": "keep-alive",
+    "Cache-Control": "no-cache, private",
+    "x-ratelimit-limit": "60",
+    "x-ratelimit-remaining": "58",
+    "CF-Cache-Status": "DYNAMIC",
+    "Set-Cookie": "REDACTED",
+    "Strict-Transport-Security": "max-age=15552000; includeSubDomains; preload",
+    "X-Content-Type-Options": "nosniff",
+    "Server": "cloudflare",
+    "CF-RAY": "REDACTED",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "data": "{\"message\":\"Code was successfully applied\",\"ticker\":\"USDT\",\"amount\":\"0.001\",\"external_id\":\"REDACTED\"}"
+}

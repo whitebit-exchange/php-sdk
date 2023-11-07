@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  app:
+    tty: true
+    build:
+      context: .
+    volumes:
+      - .:/app
