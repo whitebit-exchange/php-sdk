@@ -5,7 +5,7 @@ push to github:
   only:
     - tags
   before_script:
-    - git fetch --unshallow
+    - git fetch --unshallow || true
     - git config --global user.email "robot@whitebit.com"
     - git config --global user.name "whitebit-robot"
     - rm -rf .gitlab* Dockerfile docker-compose.yaml tests
