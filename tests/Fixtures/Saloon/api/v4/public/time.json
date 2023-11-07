@@ -1,0 +1,1 @@
+{"statusCode":200,"headers":{"Date":"REDACTED","Content-Type":"application\/json","Content-Length":"19","Connection":"keep-alive","CF-Cache-Status":"DYNAMIC","Strict-Transport-Security":"max-age=15552000; includeSubDomains; preload","X-Content-Type-Options":"nosniff","Server":"cloudflare","CF-RAY":"REDACTED","alt-svc":"h3=\":443\"; ma=86400"},"data":"{\"time\":1694440015}"}

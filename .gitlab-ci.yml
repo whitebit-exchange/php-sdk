@@ -1,0 +1,8 @@
+stages:
+  - build
+  - test
+  - security
+  - deploy
+
+include:
+  - local: .gitlab/jobs/*.yml

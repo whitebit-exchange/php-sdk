@@ -1,0 +1,17 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "Date": "REDACTED",
+    "Content-Type": "application\/json",
+    "Content-Length": "172",
+    "Connection": "keep-alive",
+    "Cache-Control": "no-cache, private",
+    "CF-Cache-Status": "DYNAMIC",
+    "Strict-Transport-Security": "max-age=15552000; includeSubDomains; preload",
+    "X-Content-Type-Options": "nosniff",
+    "Server": "cloudflare",
+    "CF-RAY": "REDACTED",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "data": "{\"account\":{\"address\":\"TEg1WeYNoHMZkoipiP32QaR6Q786hNeauj\"},\"required\":{\"maxAmount\":\"0\",\"minAmount\":\"5\",\"fixedFee\":\"0\",\"flexFee\":{\"percent\":\"0\",\"minFee\":\"0\",\"maxFee\":\"0\"}}}"
+}

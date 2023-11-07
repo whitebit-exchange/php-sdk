@@ -1,0 +1,16 @@
+{
+  "statusCode": 200,
+  "headers": {
+    "Date": "REDACTED",
+    "Content-Type": "application\/json",
+    "Content-Length": "589",
+    "Connection": "keep-alive",
+    "CF-Cache-Status": "DYNAMIC",
+    "Strict-Transport-Security": "max-age=15552000; includeSubDomains; preload",
+    "X-Content-Type-Options": "nosniff",
+    "Server": "cloudflare",
+    "CF-RAY": "REDACTED",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "data": "[{\"result\":{\"orderId\":304535535486,\"clientOrderId\":\"\",\"market\":\"WBT_USDT\",\"side\":\"buy\",\"type\":\"limit\",\"timestamp\":1694592321,\"dealMoney\":\"0\",\"dealStock\":\"0\",\"amount\":\"10\",\"takerFee\":\"0.0007\",\"makerFee\":\"0\",\"left\":\"10\",\"dealFee\":\"0\",\"ioc\":false,\"postOnly\":false,\"price\":\"2\"},\"error\":null},{\"result\":{\"orderId\":304535535522,\"clientOrderId\":\"\",\"market\":\"WBT_USDT\",\"side\":\"buy\",\"type\":\"limit\",\"timestamp\":1694592321,\"dealMoney\":\"0\",\"dealStock\":\"0\",\"amount\":\"10\",\"takerFee\":\"0.0007\",\"makerFee\":\"0\",\"left\":\"10\",\"dealFee\":\"0\",\"ioc\":false,\"postOnly\":false,\"price\":\"2\"},\"error\":null}]"
+}
