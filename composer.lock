@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "54727f4c54e541861c0c4c43c367d8d1",
+    "content-hash": "92ec9de83f3705e694d18df47f71b5ae",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -424,7 +424,7 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v10.30.1",
+            "version": "v10.31.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
@@ -479,7 +479,7 @@
         },
         {
             "name": "illuminate/conditionable",
-            "version": "v10.30.1",
+            "version": "v10.31.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -525,7 +525,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v10.30.1",
+            "version": "v10.31.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -573,7 +573,7 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "v10.30.1",
+            "version": "v10.31.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -619,16 +619,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v10.30.1",
+            "version": "v10.31.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "5244b825e8988db7c91254c31ce224dc3892eeae"
+                "reference": "7c28b263a170e3c402f29c964fa0e8da17b2f832"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/5244b825e8988db7c91254c31ce224dc3892eeae",
-                "reference": "5244b825e8988db7c91254c31ce224dc3892eeae",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/7c28b263a170e3c402f29c964fa0e8da17b2f832",
+                "reference": "7c28b263a170e3c402f29c964fa0e8da17b2f832",
                 "shasum": ""
             },
             "require": {
@@ -686,7 +686,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-10-30T01:00:17+00:00"
+            "time": "2023-11-03T13:09:12+00:00"
         },
         {
             "name": "nesbot/carbon",
