@@ -3,7 +3,7 @@ push to github:
   image: bitnami/git
   when: manual
   only:
-    - tags
+    - main
   before_script:
     - git fetch --unshallow || true
     - git config --global user.email "robot@whitebit.com"
