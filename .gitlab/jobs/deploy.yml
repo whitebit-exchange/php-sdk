@@ -19,4 +19,4 @@ push to github:
         GIT_COMMITTER_EMAIL='robot@whitebit.com'
       " HEAD
   script:
-    - git push --tags -f origin 'HEAD:main'
+    - git push -f origin 'HEAD:main'

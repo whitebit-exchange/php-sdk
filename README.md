@@ -1,7 +1,7 @@
 # WhiteBIT PHP SDK
 
 [![Latest Version](https://img.shields.io/packagist/v/whitebit/php.svg)](https://packagist.org/packages/whitebit/php)
-[![License](https://img.shields.io/github/license/whitebit/php.svg)](LICENSE)
+[![License](https://img.shields.io/github/license/whitebit-exchange/php.svg)](LICENSE)
 
 Official PHP SDK for the [WhiteBIT](https://whitebit.com/) API. ([WhiteBIT API Documentation](docs.whitebit.com))
 
