@@ -3,7 +3,7 @@
 [![Latest Version](https://img.shields.io/packagist/v/whitebit/php-sdk.svg)](https://packagist.org/packages/whitebit/php-sdk)
 [![License](https://img.shields.io/github/license/whitebit-exchange/php-sdk.svg)](LICENSE)
 
-Official PHP SDK for the [WhiteBIT](https://whitebit.com/) API. ([WhiteBIT API Documentation](https://docs.whitebit.com))
+Official PHP SDK for the [WhiteBIT](https://whitebit.com/) API. ([WhiteBIT API Documentation](https://whitebit-exchange.github.io/api-docs/))
 
 ## Requirements
 * `PHP 8.2` or higher
