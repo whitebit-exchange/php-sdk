@@ -34,8 +34,8 @@ final class WhiteBITServiceProvider extends BaseServiceProvider
                     new ConnectorConfig(
                         $configRepository->get('whitebit.public_key'),
                         $configRepository->get('whitebit.secret_key'),
-                        $configRepository->get('whitebit.timeout'),
                         $configRepository->get('whitebit.base_url'),
+                        $configRepository->get('whitebit.timeout'),
                     )
                 );
             }
