@@ -24,7 +24,7 @@ final class HistoryRequest extends Request implements HasBody
     public function __construct(
         protected ?TransactionMethodEnum $transactionMethod = null,
         protected ?string $ticker = null,
-        string $address = null,
+        ?string $address = null,
         protected ?array $addresses = [],
         protected ?string $uniqueId = null,
         protected ?array $status = [],
