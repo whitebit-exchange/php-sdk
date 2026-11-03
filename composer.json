@@ -1,41 +1,60 @@
 {
-    "name": "whitebit/php-sdk",
+    "name": "whitebit-exchange/php-sdk",
     "type": "library",
-    "license": "MIT",
+    "description": "Official PHP SDK for the WhiteBIT cryptocurrency exchange API",
+    "keywords": [
+        "whitebit",
+        "cryptocurrency",
+        "exchange",
+        "api",
+        "sdk",
+        "trading"
+    ],
+    "homepage": "https://www.whitebit.com",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "WhiteBit SDK Team"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/whitebit-exchange/php-sdk/issues",
+        "source": "https://github.com/whitebit-exchange/php-sdk",
+        "docs": "https://docs.whitebit.com"
+    },
+    "require": {
+        "php": "^8.1",
+        "ext-json": "*",
+        "psr/http-client": "^1.0",
+        "psr/http-client-implementation": "^1.0",
+        "psr/http-factory": "^1.0",
+        "psr/http-factory-implementation": "^1.0",
+        "psr/http-message": "^1.1 || ^2.0",
+        "php-http/discovery": "^1.0",
+        "php-http/multipart-stream-builder": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0",
+        "friendsofphp/php-cs-fixer": "3.5.0",
+        "phpstan/phpstan": "^1.12",
+        "guzzlehttp/guzzle": "^7.4"
+    },
     "autoload": {
         "psr-4": {
-            "WhiteBIT\\Sdk\\": "src/"
+            "Whitebit\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Whitebit\\Tests\\": "tests/"
         }
     },
-    "require": {
-        "php": "^8.2",
-        "saloonphp/saloon": "^2.0",
-        "ext-json": "*",
-        "illuminate/support": "^9.0|^10.0|^11.0",
-        "illuminate/collections": "^9.0|^10.0|^11.0"
-    },
-    "require-dev": {
-        "pestphp/pest": "2.x-dev",
-        "mockery/mockery": "2.0.x-dev",
-        "laravel/pint": "dev-main",
-        "phpstan/phpstan": "1.11.x-dev",
-        "rector/rector": "^1.0.4"
-    },
-    "config": {
-        "allow-plugins": {
-            "pestphp/pest-plugin": true
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "WhiteBIT\\Sdk\\WhiteBITServiceProvider"
-            ]
-        }
+    "scripts": {
+        "build": [
+            "@php -l src",
+            "@php -l tests"
+        ],
+        "test": "phpunit",
+        "analyze": "phpstan analyze src tests --memory-limit=1G"
     }
 }

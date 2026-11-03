@@ -1,0 +1,51 @@
+<?php
+
+namespace Whitebit\SubAccount\Types;
+
+use Whitebit\Core\Json\JsonSerializableType;
+use Whitebit\Core\Json\JsonProperty;
+use Whitebit\Core\Types\ArrayType;
+
+class ListUnconfirmedSubAccountWithdrawalsResponse extends JsonSerializableType
+{
+    /**
+     * @var ?array<ListUnconfirmedSubAccountWithdrawalsResponseDataItem> $data List of unconfirmed withdrawal transactions.
+     */
+    #[JsonProperty('data'), ArrayType([ListUnconfirmedSubAccountWithdrawalsResponseDataItem::class])]
+    public ?array $data;
+
+    /**
+     * @var ?int $limit Applied limit value.
+     */
+    #[JsonProperty('limit')]
+    public ?int $limit;
+
+    /**
+     * @var ?int $offset Applied offset value.
+     */
+    #[JsonProperty('offset')]
+    public ?int $offset;
+
+    /**
+     * @param array{
+     *   data?: ?array<ListUnconfirmedSubAccountWithdrawalsResponseDataItem>,
+     *   limit?: ?int,
+     *   offset?: ?int,
+     * } $values
+     */
+    public function __construct(
+        array $values = [],
+    ) {
+        $this->data = $values['data'] ?? null;
+        $this->limit = $values['limit'] ?? null;
+        $this->offset = $values['offset'] ?? null;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return $this->toJson();
+    }
+}

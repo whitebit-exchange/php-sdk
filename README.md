@@ -1,127 +1,132 @@
-# WhiteBIT PHP SDK
+<h1 align="center">WhiteBit PHP SDK</h1>
 
-[![Latest Version](https://img.shields.io/packagist/v/whitebit/php-sdk.svg)](https://packagist.org/packages/whitebit/php-sdk)
-[![License](https://img.shields.io/github/license/whitebit-exchange/php-sdk.svg)](LICENSE)
+<p align="center">
+  <strong>Official PHP SDK for the WhiteBit API — trade, query, and manage your crypto portfolio programmatically.</strong>
+</p>
 
-Official PHP SDK for the [WhiteBIT](https://whitebit.com/) API. ([WhiteBIT API Documentation](https://whitebit-exchange.github.io/api-docs/))
+<p align="center">
+  <img src="https://img.shields.io/badge/PHP-≥ 8.1-777BB4?style=flat-square&logo=php" alt="PHP ≥ 8.1" />
+  <img src="https://img.shields.io/badge/license-Apache_2.0-green?style=flat-square" alt="Apache 2.0 license" />
+</p>
 
-## Requirements
-* `PHP 8.2` or higher
+---
+
+## Prerequisites
+
+| Requirement | Details |
+|-------------|---------|
+| **PHP ≥ 8.1** | Required runtime |
+| **WhiteBit account** | Sign up at [whitebit.com](https://whitebit.com) |
+| **WhiteBit API key** | Profile → API keys → Create key (Read and/or Trade permissions) |
+
+---
 
 ## Installation
 
-You can install this SDK via [Composer](https://getcomposer.org/):
-
 ```bash
-composer require whitebit/php-sdk
+composer require whitebit-exchange/php-sdk
 ```
 
-## Usage
+---
 
-### Plain PHP with autoload
+## Quick Start
+
+### 1. Get your API credentials
+
+1. Log in to [whitebit.com](https://whitebit.com) → **Profile → API keys**
+2. Create a new key — choose **Read** and/or **Trade** permissions as needed
+3. Copy your **API Key** and **Token**
+
+> Public endpoints (market data, tickers, order book) work without credentials. Private endpoints (account, trading) require both.
+
+### 2. Initialize the client
+
+**Public endpoints only** (market data, tickers, order book):
+
 ```php
-<?php
+use Whitebit\WhitebitClient;
 
-use WhiteBIT\Sdk\Connectors\WhiteBITConnector;
-use WhiteBIT\Sdk\Connectors\ConnectorConfig;
-use WhiteBIT\Sdk\Requests\General\V1\KlineRequest;
+$client = new WhitebitClient(token: "", txcApikey: "");
+```
 
-$connector = new WhiteBITConnector(
-    new ConnectorConfig('api_key', 'api_secret')
+**Private endpoints** (account, trading — requires HMAC signing):
+
+```php
+use Whitebit\WhitebitClient;
+use Whitebit\Auth\HmacClient;
+
+$client = new WhitebitClient(
+    token: "",
+    txcApikey: "YOUR_API_KEY",
+    options: ['client' => new HmacClient("YOUR_API_SECRET")],
+);
+```
+
+> **Note:** WhiteBit private endpoints use HMAC-SHA512 signing (`X-TXC-PAYLOAD` + `X-TXC-SIGNATURE`).
+> `HmacClient` handles this automatically — no manual signing needed.
+```
+
+---
+
+## Usage Examples
+
+```php
+// Market data (no credentials required)
+$tickers = $client->publicApiV4->getMarketActivity();
+$depth   = $client->publicApiV4->getOrderbook(new GetOrderbookRequest(market: "BTC_USDT"));
+
+// Account
+$balance = $client->accountEndpoints->getTradingBalance();
+
+// Spot trading
+$order   = $client->spotTrading->createLimitOrder(
+    new CreateLimitOrderRequest(
+        market: "BTC_USDT", side: "buy", amount: "0.01", price: "95000"
+    )
+);
+$client->spotTrading->cancelOrder(
+    new CancelOrderRequest(market: "BTC_USDT", orderId: $order->orderId)
 );
 
-$connector->send(new KlineRequest('BTC_USDT'))
+// Main account — transfer & withdraw
+$client->transfer->transfer(new TransferRequest(from: "main", to: "spot", ticker: "USDT", amount: "100"));
+$client->withdraw->createWithdraw(new CreateWithdrawRequest(ticker: "USDT", amount: "500", address: "0x..."));
 ```
 
-### Laravel
-Package automatically injects `WhiteBITServiceProvider.php` into your app.
+---
 
-#### Publish config
-```shell
-php artisan vendor:publish --provider="WhiteBIT\Sdk\WhiteBITServiceProvider"
-```
+## Available Modules
 
-### Environment variables
-```dotenv
-WHITEBIT_PUBLIC_KEY=
-WHITEBIT_SECRET_KEY=
-```
+| Module | Description |
+|--------|-------------|
+| `publicApiV4` | Tickers, order book, trade history, klines, assets |
+| `spotTrading` | Limit, market, stop-limit, stop-market, bulk orders |
+| `collateralTrading` | Collateral orders, OCO, positions |
+| `accountEndpoints` | Trading balance, open orders, order history |
+| `mainAccount` | Main balances, deposit addresses, fee info |
+| `transfer` | Transfer between main and trade accounts |
+| `withdraw` | Withdrawal requests |
+| `codes` | WhiteBit codes — create, apply, history |
+| `fees` | Trading fees |
+| `subAccount` | Sub-account management |
 
-#### Usage
-```php
-namespace App\Http\Controllers;
- 
-use Illuminate\View\View;
-use WhiteBIT\Sdk\Connectors\WhiteBITConnector;
-use WhiteBIT\Sdk\Requests\General\V1\KlineRequest;
- 
-class ExampleController extends Controller
-{
+---
 
-    public function show(WhiteBITConnector $connector): View
-    {
-        $response = $connector->send(new KlineRequest('BTC_USDT'));
-    
-        return response()->json(
-            $response->json()
-        );
-    }
-}
-```
+## Resources
 
-#### Notes
-`WhiteBITServiceProvider` registers `WhiteBITConnector` as singleton, use it with care in runtimes like `openswoole`, `roadrunner` etc.
+| | |
+|---|---|
+| [WhiteBIT API Documentation](https://docs.whitebit.com) | Official API reference |
+| [API Platform Overview](https://docs.whitebit.com/private/http-trade-v4/) | REST, WebSocket, authentication, rate limits |
+| [Use with AI](https://github.com/whitebit-exchange/whitebit-mcp) | Use API docs with Claude, Cursor, VS Code via MCP |
+| [GitHub Repository](https://github.com/whitebit-exchange/php-sdk) | Source code |
+| [Releases](https://github.com/whitebit-exchange/php-sdk/releases) | Binaries and changelog |
+| [Contributing](CONTRIBUTING.md) | Development setup and contribution guide |
+| [Report an Issue](https://github.com/whitebit-exchange/php-sdk/issues) | Bug reports and feature requests |
+| [WhiteBIT Exchange](https://whitebit.com) | The exchange |
 
-## Available requests
+---
 
-```
-Requests
-├── General
-│   ├── AssetsRequest.php
-│   ├── CollateralMarketsRequest.php
-│   ├── FeeRequest.php
-│   ├── FutureMarketsRequest.php
-│   ├── HealthRequest.php
-│   ├── MarketActivityRequest.php
-│   ├── MarketsRequest.php
-│   ├── OrderBookRequest.php
-│   ├── TimeRequest.php
-│   ├── TradesRequest.php
-│   └── V1
-│       ├── KlineRequest.php
-│       ├── MarketActivityRequest.php
-│       ├── SingleMarketActivityRequest.php
-│       └── TradeHistoryRequest.php
-└── Private
-    ├── AddressRequest.php
-    ├── Codes
-    │   ├── ApplyCodeRequest.php
-    │   ├── CodesHistoryRequest.php
-    │   ├── CreateCodeRequest.php
-    │   └── MyCodesRequest.php
-    ├── Main
-    │   ├── CreateNewAddressRequest.php
-    │   ├── CreateWithdrawPayRequest.php
-    │   ├── CreateWithdrawRequest.php
-    │   ├── FiatDepositUrlRequest.php
-    │   ├── HistoryRequest.php
-    │   └── TransferBetweenBalancesRequest.php
-    ├── MainBalanceRequest.php
-    └── Trade
-        ├── Spot
-        │   ├── DealsHistoryRequest.php
-        │   ├── OrderDealsRequest.php
-        │   ├── OrderHistoryRequest.php
-        │   ├── Orders
-        │   │   ├── CancelOrderRequest.php
-        │   │   ├── CreateBulkLimitOrderRequest.php
-        │   │   ├── CreateLimitOrderRequest.php
-        │   │   ├── CreateMarketOrderRequest.php
-        │   │   ├── CreateStockMarketOrderRequest.php
-        │   │   ├── CreateStopLimitOrderRequest.php
-        │   │   └── CreateStopMarketOrderRequest.php
-        │   └── UnexecutedOrdersRequest.php
-        ├── StatusKillSwitchRequest.php
-        ├── SyncKillSwitchRequest.php
-        └── TradeBalanceRequest.php
-```
+## License
+
+[Apache 2.0](LICENSE.md)
